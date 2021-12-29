@@ -1,0 +1,138 @@
+; Mac + HHKB (英字) ユーザー向け
+;
+; 1. Win キーと Ctrl キーの入れ替え
+;
+; 2. 左右 Win (Ctrl) キーの空打ちで IME の OFF/ON を切り替える
+;
+; 左 Win (Ctrl) キーの空打ちで IME を「英数」に切り替え
+; 右 Win (Ctrl) キーの空打ちで IME を「かな」に切り替え
+; Win (Ctrl) キーを押している間に他のキーを打つと通常の Win キーとして動作
+;
+; Author:     karakaram   http://www.karakaram.com/Win-ime-on-off
+
+#Include IME.ahk
+
+; Razer Synapseなど、キーカスタマイズ系のツールを併用しているときのエラー対策
+#MaxHotkeysPerInterval 350
+
+; 主要なキーを HotKey に設定し、何もせずパススルーする
+*~a::
+*~b::
+*~c::
+*~d::
+*~e::
+*~f::
+*~g::
+*~h::
+*~i::
+*~j::
+*~k::
+*~l::
+*~m::
+*~n::
+*~o::
+*~p::
+*~q::
+*~r::
+*~s::
+*~t::
+*~u::
+*~v::
+*~w::
+*~x::
+*~y::
+*~z::
+*~1::
+*~2::
+*~3::
+*~4::
+*~5::
+*~6::
+*~7::
+*~8::
+*~9::
+*~0::
+*~F1::
+*~F2::
+*~F3::
+*~F4::
+*~F5::
+*~F6::
+*~F7::
+*~F8::
+*~F9::
+*~F10::
+*~F11::
+*~F12::
+*~`::
+*~~::
+*~!::
+*~@::
+*~#::
+*~$::
+*~%::
+*~^::
+*~&::
+*~*::
+*~(::
+*~)::
+*~-::
+*~_::
+*~=::
+*~+::
+*~[::
+*~{::
+*~]::
+*~}::
+*~\::
+*~|::
+*~;::
+*~'::
+*~"::
+*~,::
+*~<::
+*~.::
+*~>::
+*~/::
+*~?::
+*~Esc::
+*~Tab::
+*~Space::
+*~Left::
+*~Right::
+*~Up::
+*~Down::
+*~Enter::
+*~PrintScreen::
+*~Delete::
+*~Home::
+*~End::
+*~PgUp::
+*~PgDn::
+    Return
+
+; Win と Ctrl の入れ替え
+*LCtrl:: Send,{Blind}{LWin DOWN}
+*LCtrl up:: Send,{Blind}{LWin UP}
+*RCtrl:: Send,{Blind}{RWin DOWN}
+*RCtrl up:: Send,{Blind}{RWin UP}
+*LWin:: Send,{Blind}{LCtrl DOWN}
+*RWin:: Send,{Blind}{RCtrl DOWN}
+
+; 左 Win (Ctrl) 空打ちで IME を OFF
+*LWin up::
+    Send,{Blind}{LCtrl UP}
+    if (A_PriorKey == "LWin")
+    {
+        IME_SET(0)
+    }
+    Return
+
+; 右 Win (Ctrl) 空打ちで IME を ON
+*RWin up::
+    Send,{Blind}{RCtrl UP}
+    if (A_PriorKey == "RWin")
+    {
+        IME_SET(1)
+    }
+    Return
