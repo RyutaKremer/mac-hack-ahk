@@ -8,7 +8,7 @@
 ; 右 Win (Ctrl) キーの空打ちで IME を「かな」に切り替え
 ; Win (Ctrl) キーを押している間に他のキーを打つと通常の Win キーとして動作
 ;
-; Author:     karakaram   http://www.karakaram.com/Win-ime-on-off
+; Reference: https://github.com/RyutaKremer/mac-hack-ahk
 
 #Include IME.ahk
 
